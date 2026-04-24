@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { site } from "@/content/site";
-import { cn } from "@/lib/utils";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,31 +20,24 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <motion.header
-      layout
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-500",
-        "bg-transparent py-8"
-      )}
+    <header
+      className="sticky top-0 z-50 w-full transition-all duration-500 bg-transparent py-8"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-10">
-        <motion.a
-          layout
+        <a
           href="#top"
           className="text-2xl font-bold tracking-tight text-foreground transition-colors hover:text-accent"
         >
           {site.name}
-        </motion.a>
+        </a>
 
         {/* Desktop Navigation */}
-        <motion.nav 
-          layout
+        <nav 
           className="hidden items-center gap-1 lg:flex" 
           aria-label="Primary"
         >
           {site.nav.map((item) => (
             <motion.a
-              layout
               key={item.href}
               href={item.href}
               whileHover={{ scale: 1.02 }}
@@ -56,7 +48,6 @@ export function SiteHeader() {
             </motion.a>
           ))}
           <motion.a
-            layout
             href={site.resumePath}
             download
             whileHover={{ scale: 1.02 }}
@@ -66,26 +57,25 @@ export function SiteHeader() {
             <Download className="h-4 w-4" />
             Resume
           </motion.a>
-        </motion.nav>
+        </nav>
 
         {/* Mobile Menu Toggle */}
         <motion.button
-          layout
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-glass-border bg-glass text-foreground transition-all lg:hidden hover:bg-glass-hover"
+          className="relative z-[60] flex h-12 w-12 items-center justify-center rounded-2xl border border-glass-border bg-glass text-foreground transition-all lg:hidden hover:bg-glass-hover"
           aria-expanded={isOpen}
           aria-label="Toggle menu"
         >
-          <AnimatePresence initial={false}>
+          <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={isOpen ? "close" : "open"}
               initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
               transition={{ duration: 0.15, ease: "circOut" }}
-              className="absolute flex items-center justify-center"
+              className="flex items-center justify-center"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </motion.div>
@@ -96,13 +86,22 @@ export function SiteHeader() {
       {/* Mobile Navigation Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full flex justify-center p-6 lg:hidden">
+          <div className="absolute left-0 right-0 top-0 z-50 flex h-screen items-start justify-center p-6 pt-24 lg:hidden">
+            {/* Backdrop to close menu when clicking outside */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="absolute inset-0 backdrop-blur-[8px]"
+            />
+            
             <motion.nav
               initial={{ opacity: 0, scale: 0.9, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="flex w-full max-w-sm flex-col space-y-6 rounded-[48px] border border-white/20 bg-black/40 p-8 shadow-[0_32px_64px_rgba(0,0,0,0.6)] backdrop-blur-3xl"
+              className="relative flex w-full max-w-sm flex-col space-y-6 rounded-[48px] border border-white/20 bg-black/40 p-8 shadow-[0_32px_64px_rgba(0,0,0,0.6)] backdrop-blur-3xl"
             >
               <div className="flex flex-col space-y-2">
                 {site.nav.map((item) => (
@@ -132,6 +131,6 @@ export function SiteHeader() {
           </div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
