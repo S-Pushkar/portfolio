@@ -14,20 +14,20 @@ export function SectionHeading({
   description,
 }: SectionHeadingProps) {
   return (
-    <div id={id} className="scroll-mt-28">
+    <div id={id} className="scroll-mt-32">
       {eyebrow ? (
-        <p className="text-sm font-medium uppercase tracking-wider text-accent-soft">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
           {eyebrow}
         </p>
       ) : null}
       <h2
         id={titleId}
-        className="mt-2 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+        className="mt-4 text-4xl font-extrabold tracking-[-0.03em] text-foreground sm:text-6xl"
       >
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 max-w-2xl text-muted">{description}</p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{description}</p>
       ) : null}
     </div>
   );

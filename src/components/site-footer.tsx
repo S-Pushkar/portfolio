@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">
+            <h2 className="font-mono text-2xl font-bold tracking-tight text-foreground">
               {site.name}
             </h2>
             <p className="max-w-xs text-sm text-muted">

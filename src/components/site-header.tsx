@@ -8,15 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close menu on resize if screen becomes large
   useEffect(() => {
@@ -30,87 +21,117 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
+    <motion.header
+      layout
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled
-          ? "border-b border-border bg-background/80 backdrop-blur-md py-3"
-          : "bg-transparent py-5"
+        "sticky top-0 z-50 w-full transition-all duration-500",
+        "bg-transparent py-8"
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-10">
+        <motion.a
+          layout
           href="#top"
-          className="text-xl font-bold tracking-tight text-foreground transition-colors hover:text-accent-soft"
+          className="text-2xl font-bold tracking-tight text-foreground transition-colors hover:text-accent"
         >
           {site.name}
-        </a>
+        </motion.a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <motion.nav 
+          layout
+          className="hidden items-center gap-1 lg:flex" 
+          aria-label="Primary"
+        >
           {site.nav.map((item) => (
-            <a
+            <motion.a
+              layout
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted transition-all hover:bg-surface hover:text-foreground active:scale-95"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="rounded-full px-4 py-2 text-sm font-bold text-muted transition-all hover:bg-glass hover:text-foreground"
             >
               {item.label}
-            </a>
+            </motion.a>
           ))}
-          <a
+          <motion.a
+            layout
             href={site.resumePath}
             download
-            className="ml-2 inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent-soft hover:shadow-accent/40 active:scale-95"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="ml-4 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-2xl shadow-accent/20 transition-all hover:bg-accent/90"
           >
             <Download className="h-4 w-4" />
             Resume
-          </a>
-        </nav>
+          </motion.a>
+        </motion.nav>
 
         {/* Mobile Menu Toggle */}
-        <button
+        <motion.button
+          layout
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-all lg:hidden active:scale-90"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-glass-border bg-glass text-foreground transition-all lg:hidden hover:bg-glass-hover"
           aria-expanded={isOpen}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={isOpen ? "close" : "open"}
+              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+              transition={{ duration: 0.15, ease: "circOut" }}
+              className="absolute flex items-center justify-center"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </motion.div>
+          </AnimatePresence>
+        </motion.button>
       </div>
 
       {/* Mobile Navigation Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden bg-surface lg:hidden"
-          >
-            <nav className="flex flex-col border-t border-border px-4 py-6 space-y-2">
-              {site.nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center rounded-xl px-4 py-3 text-base font-medium text-muted transition-all hover:bg-background hover:text-foreground active:pl-6"
-                >
-                  {item.label}
-                </a>
-              ))}
+          <div className="absolute left-0 right-0 top-full flex justify-center p-6 lg:hidden">
+            <motion.nav
+              initial={{ opacity: 0, scale: 0.9, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="flex w-full max-w-sm flex-col space-y-6 rounded-[48px] border border-white/20 bg-black/40 p-8 shadow-[0_32px_64px_rgba(0,0,0,0.6)] backdrop-blur-3xl"
+            >
+              <div className="flex flex-col space-y-2">
+                {site.nav.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center justify-between rounded-3xl px-6 py-4 text-xl font-bold text-white/70 transition-all hover:bg-white/5 hover:text-white"
+                  >
+                    <span>{item.label}</span>
+                    <div className="h-1.5 w-1.5 rounded-full bg-accent opacity-0 transition-all group-hover:scale-[2] group-hover:opacity-100" />
+                  </a>
+                ))}
+              </div>
+              
+              <div className="h-px w-full bg-white/5" />
+
               <a
                 href={site.resumePath}
                 download
-                className="flex items-center justify-center gap-2 rounded-xl bg-accent py-4 text-base font-bold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent-soft active:scale-[0.98]"
+                className="flex items-center justify-center gap-3 rounded-full bg-accent px-8 py-5 text-xl font-bold text-white shadow-2xl shadow-accent/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <Download className="h-5 w-5" />
-                Download Resume
+                <Download className="h-6 w-6" />
+                Resume
               </a>
-            </nav>
-          </motion.div>
+            </motion.nav>
+          </div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

@@ -4,88 +4,87 @@ import { site } from "@/content/site";
 import { Download, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+const springTransition = {
+  type: "spring",
+  stiffness: 260,
+  damping: 20,
+} as const;
+
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-border px-4 pb-24 pt-20 sm:px-6 sm:pt-32 lg:px-8"
+      className="relative flex min-h-[90vh] flex-col justify-center px-4 pb-24 pt-20 sm:px-6 sm:pt-32 lg:px-8"
       aria-labelledby="hero-heading"
     >
-      {/* Background Glows */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full blur-[120px]"
-        style={{ background: "var(--glow)" }}
-        aria-hidden
-      />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.2 }}
-        className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full blur-[100px]"
-        style={{ background: "var(--glow)" }}
-        aria-hidden
-      />
-
       <div className="relative mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={springTransition}
         >
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent-soft">
+          <p className="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-accent">
             Full Stack Developer
           </p>
         </motion.div>
 
         <motion.h1
           id="hero-heading"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-6 max-w-4xl text-5xl font-extrabold tracking-tight text-foreground sm:text-7xl lg:text-8xl"
+          transition={{ ...springTransition, delay: 0.1 }}
+          className="mt-8 max-w-5xl text-6xl font-extrabold tracking-[-0.03em] text-foreground sm:text-8xl lg:text-9xl"
         >
           {site.name}
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
+          transition={{ ...springTransition, delay: 0.2 }}
+          className="mt-10 max-w-2xl text-xl leading-relaxed text-muted sm:text-2xl"
         >
           {site.tagline}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+          transition={{ ...springTransition, delay: 0.3 }}
+          className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-center"
         >
-          <a
+          <motion.a
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={springTransition}
             href="#projects"
-            className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-8 py-4 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:bg-accent-soft hover:shadow-accent/40 active:scale-95"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-10 py-5 text-lg font-bold text-white shadow-2xl shadow-accent/25 transition-colors hover:bg-accent/90"
           >
             View projects
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </a>
-          <a
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={springTransition}
             href="#contact"
-            className="inline-flex items-center justify-center rounded-2xl border border-border bg-surface px-8 py-4 text-base font-bold text-foreground transition-all hover:bg-surface-hover active:scale-95"
+            className="glass-card inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-foreground"
           >
             Get in touch
-          </a>
-          <a
+          </motion.a>
+
+          <motion.a
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={springTransition}
             href={site.resumePath}
             download
-            className="group inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-bold text-accent-soft transition-all hover:text-white active:scale-95"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-5 text-lg font-bold text-accent transition-colors hover:text-accent-soft"
           >
             <Download className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
             Resume
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

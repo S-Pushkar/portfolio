@@ -6,37 +6,39 @@ import { motion } from "framer-motion";
 
 export function SkillsSection() {
   return (
-    <section
+    <motion.section
+      layout
       className="border-b border-border px-4 py-24 sm:px-6 lg:px-8"
       aria-labelledby="skills-title"
     >
-      <div className="mx-auto max-w-6xl space-y-16">
+      <motion.div layout className="mx-auto max-w-6xl space-y-24">
         <SectionHeading
           id="skills"
           titleId="skills-title"
           eyebrow="Toolkit"
           title="Technical skills"
         />
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
           {site.skillGroups.map((group, groupIdx) => (
             <motion.div
               key={group.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: groupIdx * 0.1 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20, delay: groupIdx * 0.1 }}
             >
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent-soft">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                 {group.title}
               </h3>
-              <ul className="mt-6 flex flex-wrap gap-3">
+              <ul className="mt-8 flex flex-wrap gap-4">
                 {group.items.map((item) => (
                   <motion.li
                     key={item}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, y: -1 }}
                     whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <span className="inline-flex cursor-default rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:bg-surface-hover">
+                    <span className="glass-card inline-flex cursor-default rounded-full px-6 py-3 text-base font-bold text-foreground transition-colors hover:bg-glass-hover hover:border-accent/40">
                       {item}
                     </span>
                   </motion.li>
@@ -45,7 +47,7 @@ export function SkillsSection() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

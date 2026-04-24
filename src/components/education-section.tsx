@@ -7,35 +7,37 @@ import { GraduationCap } from "lucide-react";
 
 export function EducationSection() {
   return (
-    <section
+    <motion.section
+      layout
       className="border-b border-border px-4 py-24 sm:px-6 lg:px-8"
       aria-labelledby="education-title"
     >
-      <div className="mx-auto max-w-6xl space-y-16">
+      <motion.div layout className="mx-auto max-w-6xl space-y-24">
         <SectionHeading
           id="education"
           titleId="education-title"
           eyebrow="Background"
           title="Education"
         />
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2">
           {site.education.map((edu, idx) => (
             <motion.article
               key={edu.school}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.01, y: -2 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative flex flex-col rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5"
+              transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.1 }}
+              className="glass-card group relative flex flex-col rounded-[32px] p-10 transition-colors hover:bg-glass-hover"
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
-                <GraduationCap className="h-6 w-6" />
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-2xl group-hover:shadow-accent/40">
+                <GraduationCap className="h-7 w-7" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">
+              <h3 className="text-3xl font-bold tracking-tight text-foreground">
                 {edu.school}
               </h3>
-              <p className="mt-2 text-lg font-medium text-accent-soft">{edu.degree}</p>
-              <dl className="mt-8 grid gap-4 sm:grid-cols-2">
+              <p className="mt-3 text-xl font-medium text-accent">{edu.degree}</p>
+              <dl className="mt-10 grid gap-6 sm:grid-cols-2">
                 {edu.details.map((d) => (
                   <div key={d.label} className="flex flex-col gap-1">
                     <dt className="text-xs font-bold uppercase tracking-wider text-muted">
@@ -50,7 +52,7 @@ export function EducationSection() {
             </motion.article>
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
