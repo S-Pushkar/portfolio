@@ -15,7 +15,7 @@ export function SiteFooter() {
               {site.name}
             </h2>
             <p className="max-w-xs text-sm text-muted">
-              Computer Science student building reliable systems and distributed backends.
+              {site.tagline}
             </p>
           </div>
 

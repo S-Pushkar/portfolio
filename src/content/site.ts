@@ -1,7 +1,7 @@
 export const site = {
   name: "Pushkar S",
   tagline:
-    "Computer Science student building reliable systems, from distributed backends to ML-powered experiences.",
+    "Building reliable systems, from distributed backends to ML-powered experiences.",
   description:
     "Portfolio of Pushkar S — B.Tech CSE at PES University, internships at SAP Labs and C-ISFCR, full-stack and systems projects.",
   resumePath: "/resume.pdf" as const,

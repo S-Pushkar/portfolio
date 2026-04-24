@@ -18,7 +18,7 @@ export function JsonLd() {
         name: site.name,
         url: base,
         sameAs,
-        jobTitle: "Computer Science Student",
+        jobTitle: "Full Stack Developer",
         alumniOf: {
           "@type": "CollegeOrUniversity",
           name: "PES University",
