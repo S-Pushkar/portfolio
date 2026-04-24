@@ -57,6 +57,9 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.3
+      wrangler:
+        specifier: ^4.85.0
+        version: 4.85.0
 
 packages:
 
