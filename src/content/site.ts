@@ -1,0 +1,171 @@
+export const site = {
+  name: "Pushkar S",
+  tagline:
+    "Computer Science student building reliable systems, from distributed backends to ML-powered experiences.",
+  description:
+    "Portfolio of Pushkar S — B.Tech CSE at PES University, internships at SAP Labs and C-ISFCR, full-stack and systems projects.",
+  resumePath: "/resume.pdf" as const,
+  contact: {
+    phone: "+91 7338320079",
+    phoneHref: "tel:+917338320079",
+    email: "spushkar0071234@gmail.com",
+    emailHref: "mailto:spushkar0071234@gmail.com",
+  },
+  profiles: {
+    github: {
+      label: "S-Pushkar",
+      href: "https://github.com/S-Pushkar"
+    },
+    leetcode: {
+      label: "LeetCode",
+      href: "https://leetcode.com/u/PushkarS007/",
+    },
+    linkedin: {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/pushkar-s-861742273/",
+    },
+  },
+  education: [
+    {
+      school: "PES University",
+      degree: "B Tech in Computer Science and Engineering (2022–2026)",
+      details: [
+        { label: "CGPA", value: "9.90" },
+        {
+          label: "Award",
+          value: "Prof. MRD Merit Scholarship for academic excellence",
+        },
+      ],
+    },
+    {
+      school: "RV PU College",
+      degree: "PUC (2020–2022)",
+      details: [{ label: "Percentage", value: "95.833%" }],
+    },
+  ],
+  skillGroups: [
+    {
+      title: "Languages",
+      items: [
+        "Java",
+        "Python",
+        "C/C++",
+        "Go",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "Bash",
+      ],
+    },
+    {
+      title: "Frameworks",
+      items: [
+        "React JS",
+        "Node JS",
+        "Express JS",
+        "Fast API",
+        "Spring Boot",
+        "Next JS",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      title: "Technologies",
+      items: ["Docker", "Kubernetes", "SQL", "NOSQL", "REST", "RAG", "Linux"],
+    },
+    {
+      title: "Big Data",
+      items: ["Hadoop", "Kafka", "Spark", "Mongo DB"],
+    },
+    {
+      title: "Tools & DevOps",
+      items: ["Git", "GitHub", "Postman", "VS Code", "IntelliJ"],
+    },
+    {
+      title: "Machine Learning",
+      items: ["Scikit-learn", "Pandas", "Matplotlib", "Lang Chain"],
+    },
+  ],
+  experience: [
+    {
+      company: "SAP Labs India",
+      role: "SAP iXp Intern",
+      period: "June 2025 – July 2025",
+      location: "Bengaluru",
+      highlights: [
+        "Engineered a real-time holographic assistant using Retrieval-Augmented Generation (RAG) for voice-activated QA, increasing engagement by 65%.",
+        "Reduced response latency by 30% through LangChain integration with custom inference APIs.",
+      ],
+    },
+    {
+      company:
+        "Center for Information Security, Forensics and Cyber Resilience",
+      role: "Research Intern",
+      period: "June 2024 – July 2024",
+      location: "Bengaluru",
+      highlights: [
+        "Detected Docker Container Escape Attacks by analyzing system calls with 95.10% accuracy.",
+        "Developed an automated script for extracting and analyzing container logs and system calls to improve forensic efficiency.",
+      ],
+    },
+    {
+      company: "CSE Department, PESU",
+      role: "Teaching Assistant for C Programming",
+      period: "January 2024 – May 2024",
+      location: "Bengaluru",
+      highlights: [
+        "Facilitated learning for 100+ students by preparing 15+ lab assignments and quizzes.",
+      ],
+    },
+  ],
+  projects: [
+    {
+      name: "TagMyPic",
+      stack:
+        "Spring Boot, FastAPI, EasyOCR, Docker, Kafka, Azure",
+      bullets: [
+        "Designed and deployed a distributed image search system utilizing OCR and sentiment analysis.",
+        "Enabled real-time querying over 1000+ uploaded images.",
+      ],
+    },
+    {
+      name: "Chaos Testing Framework",
+      stack: "Spring Boot, Docker, Mongo DB, Grafana, Prometheus",
+      bullets: [
+        "Engineered a framework to inject 4 types of faults to validate microservice resilience.",
+        "Implemented live monitoring of metrics through Prometheus and Grafana.",
+      ],
+    },
+    {
+      name: "Location Based Attendance System",
+      stack: "Golang, MySQL, Next JS",
+      bullets: [
+        "Integrated geofencing and browser APIs for precise location-based attendance.",
+        "Achieved location capture within 20 meters and reduced proxy check-ins by 90%.",
+      ],
+    },
+  ],
+  achievements: [
+    {
+      title: "LeetCode",
+      description:
+        "Contest rating of 1789 with 1000+ problems solved.",
+    },
+    {
+      title: "Capture The Flag (CTF)",
+      description:
+        "Participated in 3+ CTFs, consistently placing in the top 10.",
+    },
+  ],
+  nav: [
+    { label: "Education", href: "#education" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
+    { label: "Achievements", href: "#achievements" },
+    { label: "Contact", href: "#contact" },
+  ],
+} as const;
+
+export type Site = typeof site;
