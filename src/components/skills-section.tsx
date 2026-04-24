@@ -37,6 +37,7 @@ export function SkillsSection() {
                     whileHover={{ scale: 1.05, y: -1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    tabIndex={-1}
                   >
                     <span className="glass-card inline-flex cursor-default rounded-full px-6 py-3 text-base font-bold text-foreground transition-colors hover:bg-glass-hover hover:border-accent/40">
                       {item}

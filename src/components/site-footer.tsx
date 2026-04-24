@@ -1,7 +1,8 @@
 "use client";
 
 import { site } from "@/content/site";
-import { Code, Globe, Download, ArrowUp, Trophy } from "lucide-react";
+import { Download, ArrowUp } from "lucide-react";
+import { GithubIcon, LinkedinIcon, LeetcodeIcon } from "@/components/icons";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -31,7 +32,7 @@ export function SiteFooter() {
                     rel="noopener noreferrer"
                     className="group flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                   >
-                    <Globe className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <LinkedinIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
                     LinkedIn
                   </a>
                 </li>
@@ -42,7 +43,7 @@ export function SiteFooter() {
                     rel="noopener noreferrer"
                     className="group flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                   >
-                    <Code className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <GithubIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
                     GitHub
                   </a>
                 </li>
@@ -53,7 +54,7 @@ export function SiteFooter() {
                     rel="noopener noreferrer"
                     className="group flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                   >
-                    <Trophy className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <LeetcodeIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
                     LeetCode
                   </a>
                 </li>

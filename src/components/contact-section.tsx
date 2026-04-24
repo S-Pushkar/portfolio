@@ -3,7 +3,8 @@
 import { site } from "@/content/site";
 import { SectionHeading } from "@/components/section-heading";
 import { motion } from "framer-motion";
-import { Phone, Mail, Globe, Code, Trophy } from "lucide-react";
+import { Phone, Mail, Code } from "lucide-react";
+import { GithubIcon, LinkedinIcon, LeetcodeIcon } from "@/components/icons";
 
 export function ContactSection() {
   return (
@@ -94,7 +95,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-2xl bg-accent/10 px-6 py-3 text-base font-bold text-accent transition-all hover:bg-accent hover:text-white"
                   >
-                    <Globe className="h-5 w-5" />
+                    <LinkedinIcon className="h-5 w-5" />
                     LinkedIn
                   </motion.a>
                   <motion.a
@@ -105,7 +106,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-2xl bg-accent/10 px-6 py-3 text-base font-bold text-accent transition-all hover:bg-accent hover:text-white"
                   >
-                    <Code className="h-5 w-5" />
+                    <GithubIcon className="h-5 w-5" />
                     GitHub
                   </motion.a>
                   <motion.a
@@ -116,7 +117,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-2xl bg-accent/10 px-6 py-3 text-base font-bold text-accent transition-all hover:bg-accent hover:text-white"
                   >
-                    <Trophy className="h-5 w-5" />
+                    <LeetcodeIcon className="h-5 w-5" />
                     LeetCode
                   </motion.a>
                 </div>

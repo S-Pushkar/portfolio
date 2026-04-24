@@ -30,7 +30,7 @@ export const site = {
       school: "PES University",
       degree: "B Tech in Computer Science and Engineering (2022–2026)",
       details: [
-        { label: "CGPA", value: "9.90" },
+        { label: "CGPA", value: "9.91" },
         {
           label: "Award",
           value: "Prof. MRD Merit Scholarship for academic excellence",
@@ -88,6 +88,17 @@ export const site = {
     },
   ],
   experience: [
+    {
+      company: "Thuriyam.ai",
+      role: "Full Stack Developer Intern",
+      period: "September 2025 – December 2025",
+      location: "Bengaluru",
+      highlights: [
+        "Architected and implemented the end-to-end First-Time User (FTU) onboarding and authentication workflow.",
+        "Engineered a robust Role-Based Access Control (RBAC) system to manage granular permissions across diverse user roles, significantly enhancing application security and data isolation.",
+        "Developed a responsive frontend architecture using React.js and Material UI (MUI), ensuring design consistency and optimal performance across all device categories.",
+      ],
+    },
     {
       company: "SAP Labs India",
       role: "SAP iXp Intern",
