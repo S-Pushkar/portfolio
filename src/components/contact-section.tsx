@@ -18,7 +18,7 @@ export function ContactSection() {
           titleId="contact-title"
           eyebrow="Hello"
           title="Contact"
-          description="Reach out for collaborations, internships, or a quick chat about systems and ML."
+          description="Reach out for collaborations, jobs, or a quick chat about systems and ML."
         />
         <address className="not-italic">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">

@@ -2,21 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { site } from "@/content/site";
+import { useActiveSection } from "@/context/active-section-context";
 import { cn } from "@/lib/utils";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { activeSectionId, isScrolled: scrolled } = useActiveSection();
 
   // Close menu on resize if screen becomes large
   useEffect(() => {
@@ -30,36 +23,53 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-500 py-8 transform-gpu",
-        scrolled && !isOpen && "bg-black/20 backdrop-blur-xl"
-      )}
-    >
+    <header className="sticky top-0 z-50 w-full py-8 transform-gpu">
+      <div
+        className={cn(
+          "absolute inset-0 -z-10 transition-all",
+          scrolled && "bg-black/20 backdrop-blur-xl",
+        )}
+      />
+
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-10">
         <a
           href="#top"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="text-2xl font-bold tracking-tight text-foreground transition-colors hover:text-accent"
         >
           {site.name}
         </a>
 
         {/* Desktop Navigation */}
-        <nav 
-          className="hidden items-center gap-1 lg:flex" 
-          aria-label="Primary"
-        >
-          {site.nav.map((item) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="rounded-full px-4 py-2 text-sm font-bold text-muted transition-all hover:bg-glass hover:text-foreground"
-            >
-              {item.label}
-            </motion.a>
-          ))}
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          {site.nav.map((item) => {
+            const id = item.href.replace(/^#/, "");
+            const isActive = activeSectionId === id;
+            return (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "location" : undefined}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-bold transition-all",
+                  isActive
+                    ? "bg-glass text-foreground ring-1 ring-accent/40"
+                    : "text-muted hover:bg-glass hover:text-foreground",
+                )}
+              >
+                {item.label}
+              </motion.a>
+            );
+          })}
           <motion.a
             href={site.resumePath}
             download
@@ -90,7 +100,11 @@ export function SiteHeader() {
               transition={{ duration: 0.15, ease: "circOut" }}
               className="flex items-center justify-center"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </motion.div>
           </AnimatePresence>
         </motion.button>
@@ -101,14 +115,14 @@ export function SiteHeader() {
         {isOpen && (
           <div className="absolute left-0 right-0 top-0 z-50 flex h-screen items-start justify-center p-6 pt-24 lg:hidden">
             {/* Backdrop to close menu when clicking outside */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="absolute inset-0 backdrop-blur-[8px]"
+              className="absolute inset-0 backdrop-blur-xl"
             />
-            
+
             <motion.nav
               initial={{ opacity: 0, scale: 0.9, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -117,19 +131,36 @@ export function SiteHeader() {
               className="relative flex w-full max-w-sm flex-col space-y-6 rounded-[48px] border border-white/20 bg-black/40 p-8 shadow-[0_32px_64px_rgba(0,0,0,0.6)] backdrop-blur-3xl"
             >
               <div className="flex flex-col space-y-2">
-                {site.nav.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="group flex items-center justify-between rounded-3xl px-6 py-4 text-xl font-bold text-white/70 transition-all hover:bg-white/5 hover:text-white"
-                  >
-                    <span>{item.label}</span>
-                    <div className="h-1.5 w-1.5 rounded-full bg-accent opacity-0 transition-all group-hover:scale-[2] group-hover:opacity-100" />
-                  </a>
-                ))}
+                {site.nav.map((item) => {
+                  const id = item.href.replace(/^#/, "");
+                  const isActive = activeSectionId === id;
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      aria-current={isActive ? "location" : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "group flex items-center justify-between rounded-3xl px-6 py-4 text-xl font-bold transition-all text-white/70 transition-all",
+                        isActive
+                          ? "bg-white/10 text-white ring-1 ring-accent/50"
+                          : "text-white/70 hover:bg-white/5 hover:text-white",
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      <div
+                        className={cn(
+                          "h-1.5 w-1.5 rounded-full bg-accent transition-all opacity-0",
+                          // isActive
+                          //   ? "scale-150 opacity-100"
+                          //   : "opacity-0 group-hover:scale-[2] group-hover:opacity-100"
+                        )}
+                      />
+                    </a>
+                  );
+                })}
               </div>
-              
+
               <div className="h-px w-full bg-white/5" />
 
               <a

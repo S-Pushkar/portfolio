@@ -1,3 +1,5 @@
+"use client";
+
 import { site } from "@/content/site";
 import { Code, Globe, Download, ArrowUp, Trophy } from "lucide-react";
 
@@ -94,6 +96,14 @@ export function SiteFooter() {
                 <li>
                   <a
                     href="#top"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
                     className="group flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                   >
                     <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />

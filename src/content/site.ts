@@ -159,6 +159,7 @@ export const site = {
     },
   ],
   nav: [
+    { label: "Home", href: "#top" },
     { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
     { label: "Experience", href: "#experience" },
