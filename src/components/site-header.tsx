@@ -2,11 +2,21 @@
 
 import { useState, useEffect } from "react";
 import { site } from "@/content/site";
+import { cn } from "@/lib/utils";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close menu on resize if screen becomes large
   useEffect(() => {
@@ -21,7 +31,10 @@ export function SiteHeader() {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full transition-all duration-500 bg-transparent py-8"
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-500 py-8 transform-gpu",
+        scrolled && !isOpen && "bg-black/20 backdrop-blur-xl"
+      )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-10">
         <a
