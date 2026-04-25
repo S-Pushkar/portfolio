@@ -135,7 +135,7 @@ export const site = {
       href: "https://github.com/S-Pushkar/TagMyPic",
       name: "TagMyPic",
       stack:
-        "Spring Boot, Fast API, EasyOCR, Docker, Kafka, Azure",
+        "Spring Boot, Fast API, Kafka",
       bullets: [
         "Designed and deployed a distributed image search system utilizing OCR and sentiment analysis.",
         "Enabled real-time querying over 1000+ uploaded images.",
@@ -144,7 +144,7 @@ export const site = {
     {
       href: "https://github.com/S-Pushkar/Chaos_Testing_Framework",
       name: "Chaos Testing Framework",
-      stack: "Spring Boot, Docker, Mongo DB, Grafana, Prometheus",
+      stack: "Spring Boot, Docker, Mongo DB",
       bullets: [
         "Engineered a framework to inject 4 types of faults to validate microservice resilience.",
         "Implemented live monitoring of metrics through Prometheus and Grafana.",
@@ -153,7 +153,7 @@ export const site = {
     {
       href: "https://github.com/S-Pushkar/Serverless_Function_Execution_Platform-AWSLambda",
       name: "Serverless Function Executor",
-      stack: "Fast API, Docker, Grafana, Prometheus",
+      stack: "Fast API, Next JS, Docker",
       bullets: [
         "Implemented a Fast API server to execute serverless functions in Docker containers.",
         "Supports Python and JavaScript functions.",
@@ -169,25 +169,12 @@ export const site = {
       ],
     },
   ],
-  achievements: [
-    {
-      title: "LeetCode",
-      description:
-        "Contest rating of 1789 with 1000+ problems solved.",
-    },
-    {
-      title: "Capture The Flag (CTF)",
-      description:
-        "Participated in 3+ CTFs, consistently placing in the top 10.",
-    },
-  ],
   nav: [
     { label: "Home", href: "#top" },
     { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
-    { label: "Achievements", href: "#achievements" },
     { label: "Contact", href: "#contact" },
   ],
 } as const;

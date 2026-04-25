@@ -24,14 +24,19 @@ export function ProjectsSection() {
         />
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           {site.projects.map((project, idx) => (
-            <Link href={project.href} key={project.name} target="_blank">
+            <Link
+              href={project.href}
+              key={project.name}
+              target="_blank"
+              className="block h-full"
+            >
               <motion.article
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.02, y: -3 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.1 }}
-                className="glass-card group flex flex-col rounded-[32px] p-10 transition-colors hover:bg-glass-hover"
+                className="glass-card group flex h-full flex-col rounded-[32px] p-10 transition-colors hover:bg-glass-hover"
               >
                 <div className="mb-10 flex items-center justify-between">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-2xl group-hover:shadow-accent/40">
