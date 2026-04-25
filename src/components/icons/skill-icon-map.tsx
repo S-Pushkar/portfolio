@@ -2,7 +2,7 @@ import type { IconType } from "react-icons";
 import { FaDatabase, FaJava } from "react-icons/fa6";
 import { MatplotlibIcon } from "@/components/icons/matplotlib-icon";
 import { TbApi } from "react-icons/tb";
-import { VscVscode, VscAzure } from "react-icons/vsc";
+import { VscVscode } from "react-icons/vsc";
 import { HiOutlineSparkles } from "react-icons/hi2";
 import {
   SiApachehadoop,
@@ -35,10 +35,6 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVim,
-  SiPrometheus,
-  SiGrafana,
-  SiMysql,
-  SiPostgresql,
 } from "react-icons/si";
 
 export const skillIconMap: Record<string, IconType> = {
@@ -79,9 +75,4 @@ export const skillIconMap: Record<string, IconType> = {
   Pandas: SiPandas,
   Matplotlib: MatplotlibIcon,
   "Lang Chain": SiLangchain,
-  Azure: VscAzure,
-  Grafana: SiGrafana,
-  Prometheus: SiPrometheus,
-  MySQL: SiMysql,
-  PostgreSQL: SiPostgresql,
 };

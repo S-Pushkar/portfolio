@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
 import Link from "next/link";
 import { HiOutlineSparkles } from "react-icons/hi2";
-import { skillIconMap } from "@/components/icons/skill-icon-map";
+import { projectTechIconMap } from "@/components/icons/project-tech-icon-map";
 
 export function ProjectsSection() {
   return (
@@ -53,7 +53,7 @@ export function ProjectsSection() {
                 <ul className="mt-5 flex flex-wrap gap-2">
                   {project.stack.split(",").map((tech) => {
                     const label = tech.trim();
-                    const Icon = skillIconMap[label] ?? HiOutlineSparkles;
+                    const Icon = projectTechIconMap[label] ?? HiOutlineSparkles;
 
                     return (
                     <li key={`${project.name}-${label}`}>
