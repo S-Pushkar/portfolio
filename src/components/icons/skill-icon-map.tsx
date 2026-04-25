@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FaDatabase } from "react-icons/fa6";
+import { FaDatabase, FaJava } from "react-icons/fa6";
 import { MatplotlibIcon } from "@/components/icons/matplotlib-icon";
 import { TbApi } from "react-icons/tb";
 import { VscVscode, VscAzure } from "react-icons/vsc";
@@ -40,7 +40,6 @@ import {
   SiMysql,
   SiPostgresql,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa6";
 
 export const skillIconMap: Record<string, IconType> = {
   Java: FaJava,
@@ -78,7 +77,7 @@ export const skillIconMap: Record<string, IconType> = {
   IntelliJ: SiIntellijidea,
   "Scikit-learn": SiScikitlearn,
   Pandas: SiPandas,
-  Matplotlib: MatplotlibIcon as IconType,
+  Matplotlib: MatplotlibIcon,
   "Lang Chain": SiLangchain,
   Azure: VscAzure,
   Grafana: SiGrafana,
