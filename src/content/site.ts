@@ -80,7 +80,7 @@ export const site = {
     },
     {
       title: "Tools & DevOps",
-      items: ["Git", "GitHub", "Postman", "VS Code", "IntelliJ"],
+      items: ["Git", "GitHub", "Postman", "Vim", "VS Code", "IntelliJ"],
     },
     {
       title: "Machine Learning",
@@ -132,6 +132,7 @@ export const site = {
   ],
   projects: [
     {
+      href: "https://github.com/S-Pushkar/TagMyPic",
       name: "TagMyPic",
       stack:
         "Spring Boot, FastAPI, EasyOCR, Docker, Kafka, Azure",
@@ -141,6 +142,7 @@ export const site = {
       ],
     },
     {
+      href: "https://github.com/S-Pushkar/Chaos_Testing_Framework",
       name: "Chaos Testing Framework",
       stack: "Spring Boot, Docker, Mongo DB, Grafana, Prometheus",
       bullets: [
@@ -149,6 +151,16 @@ export const site = {
       ],
     },
     {
+      href: "https://github.com/S-Pushkar/Serverless_Function_Execution_Platform-AWSLambda",
+      name: "Serverless Function Executor",
+      stack: "FastAPI, Docker, Grafana, Prometheus",
+      bullets: [
+        "Implemented a FastAPI server to execute serverless functions in Docker containers.",
+        "Supports Python and JavaScript functions.",
+      ],
+    },
+    {
+      href: "https://github.com/S-Pushkar/location-based-attendance-system",
       name: "Location Based Attendance System",
       stack: "Golang, MySQL, Next JS",
       bullets: [
