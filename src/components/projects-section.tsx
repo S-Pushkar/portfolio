@@ -5,6 +5,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { motion } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
 import Link from "next/link";
+import { HiOutlineSparkles } from "react-icons/hi2";
+import { skillIconMap } from "@/components/icons/skill-icon-map";
 
 export function ProjectsSection() {
   return (
@@ -43,9 +45,23 @@ export function ProjectsSection() {
                 <h3 className="text-3xl font-bold tracking-tight text-foreground">
                   {project.name}
                 </h3>
-                <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-                  {project.stack}
-                </p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {project.stack.split(",").map((tech) => {
+                    const label = tech.trim();
+                    const Icon = skillIconMap[label] ?? HiOutlineSparkles;
+
+                    return (
+                    <li key={`${project.name}-${label}`}>
+                      <span className="glass-card inline-flex max-w-full items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-accent transition-colors hover:border-accent/40 hover:bg-glass-hover sm:px-4 sm:text-xs">
+                        <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-white/10">
+                          <Icon className="h-2.5 w-2.5" />
+                        </span>
+                        {label}
+                      </span>
+                    </li>
+                    );
+                  })}
+                </ul>
                 <ul className="mt-10 flex-1 space-y-5">
                   {project.bullets.map((b, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-3 text-base leading-relaxed text-muted">

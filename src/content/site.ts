@@ -76,11 +76,11 @@ export const site = {
     },
     {
       title: "Big Data",
-      items: ["Hadoop", "Kafka", "Spark", "Mongo DB"],
+      items: ["Hadoop", "Kafka", "Spark", "Mongo DB", "MySQL", "PostgreSQL"],
     },
     {
       title: "Tools & DevOps",
-      items: ["Git", "GitHub", "Postman", "Vim", "VS Code", "IntelliJ"],
+      items: ["Grafana", "Prometheus", "Git", "GitHub", "Postman", "Vim", "VS Code", "IntelliJ"],
     },
     {
       title: "Machine Learning",
@@ -135,7 +135,7 @@ export const site = {
       href: "https://github.com/S-Pushkar/TagMyPic",
       name: "TagMyPic",
       stack:
-        "Spring Boot, FastAPI, EasyOCR, Docker, Kafka, Azure",
+        "Spring Boot, Fast API, EasyOCR, Docker, Kafka, Azure",
       bullets: [
         "Designed and deployed a distributed image search system utilizing OCR and sentiment analysis.",
         "Enabled real-time querying over 1000+ uploaded images.",
@@ -153,16 +153,16 @@ export const site = {
     {
       href: "https://github.com/S-Pushkar/Serverless_Function_Execution_Platform-AWSLambda",
       name: "Serverless Function Executor",
-      stack: "FastAPI, Docker, Grafana, Prometheus",
+      stack: "Fast API, Docker, Grafana, Prometheus",
       bullets: [
-        "Implemented a FastAPI server to execute serverless functions in Docker containers.",
+        "Implemented a Fast API server to execute serverless functions in Docker containers.",
         "Supports Python and JavaScript functions.",
       ],
     },
     {
       href: "https://github.com/S-Pushkar/location-based-attendance-system",
       name: "Location Based Attendance System",
-      stack: "Golang, MySQL, Next JS",
+      stack: "Go, MySQL, Next JS",
       bullets: [
         "Integrated geofencing and browser APIs for precise location-based attendance.",
         "Achieved location capture within 20 meters and reduced proxy check-ins by 90%.",

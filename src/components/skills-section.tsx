@@ -3,85 +3,8 @@
 import { site } from "@/content/site";
 import { SectionHeading } from "@/components/section-heading";
 import { motion } from "framer-motion";
-import type { IconType } from "react-icons";
-import { FaDatabase } from "react-icons/fa6";
-import { MatplotlibIcon } from "@/components/icons/matplotlib-icon";
 import { HiOutlineSparkles } from "react-icons/hi2";
-import { TbApi } from "react-icons/tb";
-import { VscVscode } from "react-icons/vsc";
-import {
-  SiApachehadoop,
-  SiApachekafka,
-  SiApachespark,
-  SiCss,
-  SiCplusplus,
-  SiDocker,
-  SiExpress,
-  SiFastapi,
-  SiGit,
-  SiGithub,
-  SiGnubash,
-  SiGo,
-  SiHtml5,
-  SiIntellijidea,
-  SiJavascript,
-  SiKubernetes,
-  SiLangchain,
-  SiLinux,
-  SiMongodb,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiPandas,
-  SiPostman,
-  SiPython,
-  SiReact,
-  SiScikitlearn,
-  SiSpringboot,
-  SiTailwindcss,
-  SiTypescript,
-  SiVim,
-} from "react-icons/si";
-import { FaJava } from "react-icons/fa6";
-
-const skillIconMap: Record<string, IconType> = {
-  Java: FaJava,
-  Python: SiPython,
-  "C/C++": SiCplusplus,
-  Go: SiGo,
-  HTML: SiHtml5,
-  CSS: SiCss,
-  JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  Bash: SiGnubash,
-  "React JS": SiReact,
-  "Node JS": SiNodedotjs,
-  "Express JS": SiExpress,
-  "Fast API": SiFastapi,
-  "Spring Boot": SiSpringboot,
-  "Next JS": SiNextdotjs,
-  "Tailwind CSS": SiTailwindcss,
-  Docker: SiDocker,
-  Kubernetes: SiKubernetes,
-  SQL: FaDatabase,
-  NOSQL: SiMongodb,
-  REST: TbApi,
-  RAG: HiOutlineSparkles,
-  Linux: SiLinux,
-  Hadoop: SiApachehadoop,
-  Kafka: SiApachekafka,
-  Spark: SiApachespark,
-  "Mongo DB": SiMongodb,
-  Git: SiGit,
-  GitHub: SiGithub,
-  Postman: SiPostman,
-  Vim: SiVim,
-  "VS Code": VscVscode,
-  IntelliJ: SiIntellijidea,
-  "Scikit-learn": SiScikitlearn,
-  Pandas: SiPandas,
-  Matplotlib: MatplotlibIcon as IconType,
-  "Lang Chain": SiLangchain,
-};
+import { skillIconMap } from "@/components/icons/skill-icon-map";
 
 export function SkillsSection() {
   return (
