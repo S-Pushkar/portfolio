@@ -3,5 +3,5 @@ export function getSiteUrl(): string {
   if (url) {
     return url.replace(/\/$/, "");
   }
-  return "https://example.com";
+  return "https://pushkars.in";
 }
