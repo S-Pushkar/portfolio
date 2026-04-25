@@ -45,7 +45,6 @@ export function ActiveSectionProvider({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log("entry.target.id", entry.target.id);
             setActiveSectionId(entry.target.id);
           }
         });
