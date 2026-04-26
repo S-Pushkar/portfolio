@@ -15,14 +15,14 @@ import {
 
 export const projectTechIconMap: Record<string, IconType> = {
   "Spring Boot": SiSpringboot,
-  FastAPI: SiFastapi,
+  "Fast API": SiFastapi,
   Docker: SiDocker,
   Kafka: SiApachekafka,
   Azure: FaMicrosoft,
   "Mongo DB": SiMongodb,
   Grafana: SiGrafana,
   Prometheus: SiPrometheus,
-  Golang: SiGo,
+  Go: SiGo,
   MySQL: SiMysql,
   "Next JS": SiNextdotjs,
 };

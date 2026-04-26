@@ -35,6 +35,10 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVim,
+  SiMysql,
+  SiPostgresql,
+  SiGrafana,
+  SiPrometheus,
 } from "react-icons/si";
 
 export const skillIconMap: Record<string, IconType> = {
@@ -75,4 +79,8 @@ export const skillIconMap: Record<string, IconType> = {
   Pandas: SiPandas,
   Matplotlib: MatplotlibIcon,
   "Lang Chain": SiLangchain,
+  MySQL: SiMysql,
+  PostgreSQL: SiPostgresql,
+  Grafana: SiGrafana,
+  Prometheus: SiPrometheus,
 };
