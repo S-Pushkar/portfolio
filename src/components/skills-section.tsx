@@ -9,11 +9,10 @@ import { skillIconMap } from "@/components/icons/skill-icon-map";
 export function SkillsSection() {
   return (
     <motion.section
-      layout
       className="border-b border-border px-4 py-24 sm:px-6 lg:px-8"
       aria-labelledby="skills-title"
     >
-      <motion.div layout className="mx-auto max-w-6xl space-y-24">
+      <motion.div className="mx-auto max-w-6xl space-y-24">
         <SectionHeading
           id="skills"
           titleId="skills-title"
@@ -28,6 +27,7 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 260, damping: 20, delay: groupIdx * 0.1 }}
+              className="transform-gpu will-change-transform"
             >
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                 {group.title}
@@ -41,7 +41,7 @@ export function SkillsSection() {
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     tabIndex={-1}
                   >
-                    <span className="glass-card inline-flex cursor-default items-center gap-2 rounded-full px-5 py-3 text-base font-bold text-foreground transition-colors hover:bg-glass-hover hover:border-accent/40">
+                    <span className="inline-flex cursor-default items-center gap-2 rounded-full border border-glass-border bg-glass px-5 py-3 text-base font-bold text-foreground transition-colors hover:bg-glass-hover hover:border-accent/40">
                       {(() => {
                         const Icon = skillIconMap[item] ?? HiOutlineSparkles;
                         return (
